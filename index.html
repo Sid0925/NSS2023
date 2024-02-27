@@ -1,0 +1,1311 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<title>NSS Data model 2023</title>
+<!-- Bootstrap -->
+<link href="css/bootstrap.min.css" rel="stylesheet"/>
+<link href="css/bootstrap-theme.css" rel="stylesheet"/>
+<link href="css/swiper.min.css" rel="stylesheet"/>
+<style>
+/*!
+ * Author: Akash Bhadange
+ */
+
+ 
+
+ body {
+  background: linear-gradient(315deg, #c31e14 0%, #4F54AC 100%)
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+  color: #333;
+ 
+  font-size: 16px;
+  color: #222;
+  font-weight: normal;
+  letter-spacing: 0.03em;
+}
+a {
+  color: #ff7b7b;
+  -webkit-transition: all 0.2s;
+  -moz-transition: all 0.2s;
+  transition: all 0.2s;
+}
+section {
+  width: 100%;
+}
+a:hover, a:focus, a:active {
+  text-decoration: none;
+  outline: none;
+}
+ul {
+  margin: 0;
+  padding: 0;
+}
+ul li {
+  list-style: none;
+}
+img {
+  max-width: 100%;
+}
+.purple {
+  color: #7447ae;
+}
+.pink {
+  color: #ff2a75;
+}
+.blue {
+  color: #1253c3;
+}
+.yellow{
+  color: #f87428;
+}
+.b{
+  color: #0291ff;
+}
+ 
+.text-left {
+  color: white;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Your Desired Font', sans-serif;
+  /* Add your desired font name in place of 'Your Desired Font' */
+}
+
+.testimonial-box {
+  position: relative;
+}
+
+.video-wrapper {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio (adjust as needed) */
+  height: 0;
+  overflow: hidden;
+}
+
+.video-wrapper video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+
+ 
+
+h3, h4, h1, p {
+  font-family: 'Montserrat', sans-serif;
+}
+p {
+  font-size: small;
+}
+
+
+
+
+
+
+header.hero {
+  position: relative;
+  background: linear-gradient(45deg, #8686ba 0%, #f4ebec 100%)
+  padding-bottom: 0px;
+  overflow: hidden; /* Hide the overflow of the pseudo-element */
+}
+
+header.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+   
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
+  /* Apply blur filter to the pseudo-element only */
+  -webkit-filter: blur(5px);
+  filter: blur(3px);
+
+  /* Ensure the pseudo-element is behind the content */
+  z-index: -1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+header.hero .hero-text {
+  
+  margin-top: 20%;
+  margin-left: 0%;
+  margin-bottom: 20%;
+
+}
+header.hero .row {
+  position: relative;
+}
+a.menu {
+  position: absolute;
+  right: 0;
+  top: 3em;
+}
+a.menu img {
+  max-width: 40px;
+}
+a.menu:hover {
+  transform: translateX(-5px);
+  -webkit-transform: translateX(-5px);
+}
+header.hero h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 4.5em;
+  font-weight: 600;
+  line-height: 1.4em;
+}
+header.hero h1 span,
+header.hero h3 {
+  font-weight: 300;
+}
+header.hero .btn {
+  margin: 3em 0;
+}
+
+ul.social-links li {
+  display: inline-block;
+}
+ul.social-links li a {
+  padding: 5px;
+  opacity: 0.6;
+}
+ul.social-links li.label {
+  font-size: 20px;
+  opacity: 0.6;
+  font-weight: 400;
+}
+ul.social-links li a:hover {
+  opacity: 1;
+}
+ul.social-links li a img {
+  max-height: 30px;
+}
+
+
+
+
+ 
+
+
+/* Case study */
+.case-study .col-md-12 {
+  transform: translateY(-80px);
+  -webkit-transform: translateY(-80px);
+  padding: 5em 3em;
+  background-color: #fff;
+  box-shadow: 0 0 100px rgba(0, 0, 0, 0.15);
+}
+h4.sub-heading {
+  text-transform: uppercase;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  color: #4e4c58;
+}
+h1.heading {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  color: #4e4c58;
+  font-size: 3em;
+  position: relative;
+  padding-bottom: 10px;
+}
+h1.heading span {
+  font-weight: 600;
+}
+h1.heading:after {
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  height: 3px;
+  width: 100px;
+}
+h1.heading.purple:after {
+  background-color: #7447ae;
+}
+h1.heading.pink:after {
+  background-color: #ff2a75;
+}
+
+
+.swiper-container {
+  width: 100%;
+  height: 100%;
+  padding: 4em 1em;
+}
+.swiper-slide {
+  font-size: 18px;
+  background: #fff;
+}
+
+.client-box {
+  background-color: #fff;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.03);
+  padding: 3.5em 2em;
+  border-radius: 5px;
+  border: 1px solid #eee;
+  text-align: center;
+  -webkit-transition: all 0.2s;
+  -moz-transition: all 0.2s;
+  transition: all 0.2s;
+}
+.client-box .client-logo {
+  max-height: 120px;
+}
+.client-box h3.title {
+  color: #4e4c58;
+  margin-bottom: 2em;
+}
+.client-box p.tag {
+  color: #7447ae;
+  font-family: 'Montserrat', sans-serif;
+  margin-bottom: 1em;
+}
+.client-box a {
+  color: #333;
+  font-style: italic;
+  opacity: 0.5;
+}
+.client-box.swiper-slide-next {
+  -ms-transform: scale(1.15); /* IE 9 */
+  -webkit-transform: scale(1.15); /* Safari */
+  transform: scale(1.15);
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+.swiper-button-next, .swiper-button-prev {
+  width: 80px;
+  height: 80px;
+  background-size: 80px 80px;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.05);
+  border-radius: 5em;
+  -webkit-transition: all 0.2s;
+  -moz-transition: all 0.2s;
+  transition: all 0.2s;
+}
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.1);
+}
+.swiper-button-next, .swiper-container-rtl .swiper-button-prev {
+  background-image: url(../assets/arrow-right.png);
+  right: -40px;
+}
+.swiper-button-prev, .swiper-container-rtl .swiper-button-next {
+  background-image: url(../assets/arrow-left.png);
+  left: -40px;
+}
+
+
+/* Testimonial */
+.testimonial-box {
+  padding: 2em;
+  color: #fff;
+  border-radius: 5px;
+  font-weight: 300;
+  min-height: 400px;
+}
+.testimonial-box h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  margin-top: 0;
+  margin-bottom: 1em;
+}
+.testimonial-box p.name {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: 1.2em;
+  margin-bottom: 0;
+}
+.testimonial-box p.designation {
+  font-family: 'Montserrat', sans-serif;
+  margin-bottom: 0;
+}
+.testimonial-box.yellow {
+  background-color: #ffbe61;
+}
+.testimonial-box.purple {
+  background-color: #7b32d5;
+}
+.testimonial-box.blue {
+  background-color: #37a7ff;
+}
+.testimonial-box.pink {
+  background-color: #ff662a;
+}
+
+
+/* Statistics */
+.stats {
+  margin: 4em 0;
+}
+.stat-box {
+  padding: 4em;
+  margin-top: 4em;
+  margin-bottom: 4em;
+}
+.stat-box h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 5.6em;
+}
+.stat-box h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  color: #4e4c58;
+  font-size: 2em;
+}
+
+
+/* Contact Banner */
+.contact-banner {
+  background: url(../assets/bg-pat.png) #664fee repeat;
+  color: #fff;
+  padding: 6em;
+}
+.contact-banner h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: 3em;
+  margin-top: 0;
+  margin-bottom: 1em;
+}
+
+
+/* Footer */
+.footer {
+  background-color: #37324b;
+  padding: 5em;
+}
+.footer p{
+  color: #ffffff;
+}
+.footer h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 3em;
+  color: #a3a1ac;
+  margin-bottom: 2em;
+}
+.footer h1 span {
+  color: #fff;
+  font-weight: 300;
+}
+.footer h1:after {
+  content: '';
+  width: 80px;
+  height: 4px;
+  background-color: #37a7ff;
+  display: block;
+  position: absolute;
+  left: 50%;
+  transform: translate(-40px, 10px);
+}
+.footer ul.social-links li a {
+  padding-left: 12px;
+  padding-right: 12px;
+}
+.footer ul.social-links li a img {
+  max-height: 40px;
+}
+
+/* Sub-footer */
+.sub-footer {
+  background-color: #322e45;
+  padding: 2em;
+  color: #a3a1ac;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+}
+.sub-footer p {
+  margin: 0;
+  font-size: 1.2em;
+}
+.sub-footer p a {
+  color: #fff;
+}
+.sub-footer p a:hover {
+  opacity: 0.8;
+}
+
+
+.footer {
+  text-align: center; /* Center-aligns the text of all children elements */
+  display: flex;
+  justify-content: center; /* Horizontally centers the content */
+  align-items: center; /* Vertically centers the content */
+  flex-direction: column; /* Aligns children elements in a column */
+}
+
+.social-links {
+  list-style-type: none; /* Removes bullet points from the list */
+  padding: 0; /* Removes any padding from the list */
+}
+
+.social-links li {
+  display: inline-block; /* Displays list items side by side */
+  margin: 0 10px; /* Gives a little space between each list item */
+}
+
+
+/* Main navigation */
+nav {
+  height: 40px;
+  width: 100%;
+  position: absolute;
+  right: 0;
+  top: 3em;
+  cursor: pointer;
+  transition: .25s ease-in-out;
+}
+#menu-toggle {
+  width: 40px;
+  clear: both;
+  float: right;
+}
+#menu-toggle span.line {
+  display: block;
+  height: 4px;
+  width: 40px;
+  background-color: #fff;
+  transition: .25s ease-in-out;
+}
+#menu-toggle .hamburger span.line {
+  margin-bottom: 0.45em;
+  clear: both;
+  float: right;
+}
+#menu-toggle .hamburger span.line:nth-child(1) {
+  width: 30px;
+  transition-delay: .25s;
+}
+#menu-toggle .hamburger span.line:nth-child(2) {
+  transition-delay: .325s;
+}
+#menu-toggle .hamburger span.line:nth-child(3) {
+  width: 20px;
+  transition-delay: .475s;
+}
+
+#menu-toggle .cross span.line {
+  width: 0px;
+  position: absolute;
+  top: 10px;
+  right: 0;
+}
+#menu-toggle .cross span.line:nth-child(1) {
+  transform: rotate(45deg);
+  transition-delay: .0s;
+}
+#menu-toggle .cross span.line:nth-child(2) {
+  transform: rotate(-45deg);
+  transition-delay: .25s;
+}
+
+#menu-toggle.open .hamburger span.line {
+  width: 0px;
+}
+#menu-toggle.open #hamburger span:nth-child(1) {
+  transition-delay: 0s;
+}
+#menu-toggle.open #hamburger span:nth-child(2) {
+  transition-delay: .125s;
+}
+#menu-toggle.open #hamburger span:nth-child(3) {
+  transition-delay: .25s;
+}
+
+#menu-toggle.open .cross span.line:nth-child(1) {
+  width: 40px;
+  transition-delay: 1s;
+}
+#menu-toggle.open .cross span.line:nth-child(2) {
+  width: 40px;
+  transition-delay: 1.25s;
+}
+
+ul.main-nav {
+  padding-right: 20px;
+  display: flex;
+  justify-content: flex-end;
+  opacity: 0;
+  visibility: hidden;
+  transition: .25s all;
+}
+ul.main-nav li {
+  display: inline-block;
+}
+ul.main-nav li a {
+  color: #fff;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  text-transform: uppercase;
+  padding: 5px 15px;
+}
+ul.main-nav li a:hover {
+  color: #ffbe61;
+}
+ul.main-nav.show-it {
+  opacity: 1;
+  visibility: visible;
+  transition-delay: .25s;
+}
+
+
+.headd{
+
+  font-family: 'Open Sans', sans-serif;
+
+}
+
+
+
+
+
+
+
+
+
+
+/* Let's optimise it for mobile devices */
+
+@media (max-width: 720px){
+  .btn-lg {
+    padding: .8em 3em;
+    font-size: .8em;
+  }
+  h1.heading {
+    font-size: 2em;
+  }
+  header.hero {
+    text-align: center;
+    padding-bottom: 0;
+  }
+  header.hero h1 {
+    font-size: 2em;
+    margin-top: 1.5em;
+  }
+  header.hero h3 {
+    font-size: 1.2em;
+    line-height: 1.6em;
+  }
+  ul.social-links li.label {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 1em;
+  }
+  ul.social-links li a {
+    opacity: 1;
+  }
+  .testimonial {
+    padding-top: 3rem;
+  }
+  .case-study .col-md-12 {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  .case-study .col-md-12 {
+    transform: translateY(0px);
+    -webkit-transform: translateY(0px);
+  }
+
+  /*Swiper classes*/
+  .client-box.swiper-slide-next {
+    -ms-transform: scale(1);
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    box-shadow: none;
+  }
+  .swiper-button-prev,
+  .swiper-button-next {
+    display: none;
+  }
+  .swiper-container {
+    padding: 4em 0em;
+  }
+  .client-box {
+    padding: 1em;
+    text-align: center;
+  }
+  .stat-box {
+    padding: 1em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+  }
+  .stat-box h1 {
+    font-size: 3.6em;
+  }
+  .stat-box h3 {
+    font-size: 1.4em;
+  }
+  .contact-banner {
+    padding: 2em;
+  }
+  .contact-banner h1 {
+    font-size: 2em;
+  }
+  .footer {
+    padding: 1em 0em;
+  }
+}
+
+
+
+
+
+
+
+
+/* Mobile view adjustments */
+@media (max-width: 768px) {
+    body {
+        font-size: 14px;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        font-size: inherit;
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+/* Desktop view adjustments */
+@media (min-width: 992px) {
+    body {
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+}
+
+/* Fix for "Pipeline 2 Overview" and "Compliance with UK GDPR" sections */
+div[id^='pipeline'], div[id^='gdpr'] {
+    display: block;
+}
+div[id^='pipeline'] img, div[id^='gdpr'] img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+div[id^='pipeline'] p, div[id^='gdpr'] p {
+    display: block;
+    width: 100%;
+}
+</style>
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700|Open+Sans:300,400,700" rel="stylesheet"/>
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+      <![endif]-->
+<style>
+ 
+
+        h2 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+            margin-top: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        strong {
+            color: #5a5a5f;
+        }
+
+
+      
+          table {
+              width: 100%;
+              border-collapse: collapse;
+              margin: 20px 0;
+              font-family: Arial, sans-serif;
+          }
+          th, td {
+              border: 1px solid #ddd;
+              padding: 8px 12px;
+              text-align: left;
+          }
+          th {
+              background-color: #f2f2f2;
+              font-weight: bold;
+          }
+          tr:nth-child(even) {
+              background-color: #f5f5f5;
+          }
+          tr:hover {
+              background-color: #ddd;
+          }
+          caption {
+              font-size: 24px;
+              font-weight: bold;
+              margin-bottom: 15px;
+          }
+
+
+
+
+
+           /* Container for the images */
+        .image-container {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-around;
+          padding: 20px;
+      }
+
+      /* Styling each individual image box */
+      .img-box {
+          margin: 20px;
+          border: 1px solid #ddd;
+          padding: 10px;
+          background-color: #fff;
+          box-shadow: 2px 2px 12px #aaa;
+      }
+
+      img {
+          max-width: 100%;
+          height: auto;
+      }
+
+      h3 {
+          text-align: center;
+
+
+
+      }
+      .box-container {
+        display: flex;
+        justify-content: space-between; /* This will space the boxes evenly */
+        padding: 20px;
+        flex-wrap: nowrap; /* This ensures the boxes won't wrap to the next line */
+    }
+
+    /* Styling each individual box */
+    .box {
+        flex: 1; /* Each box will take an equal portion of the width */
+        border: 1px solid #ddd;
+        background-color: #fff;
+        box-shadow: 2px 2px 12px #aaa;
+        text-align: center;
+        padding: 20px;
+        margin: 0 10px; /* Add some space between the boxes */
+    }
+
+    strong {
+      color: #000000;
+  }
+  em {
+      color: #3498DB;
+  }
+  .condition-box {
+      border: 2px solid #E74C3C;
+      padding: 15px;
+      margin-bottom: 20px;
+  }
+  .true-branch, .false-branch {
+      background-color: #ECF0F1;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+  }
+
+
+ 
+    .content-wrapper {
+        margin-left: 50px;
+    }
+
+    .on-premises-heading {
+      color: #000000; /* Neutral color for on-premises, as it's not an Azure product */
+      font-weight: 500;
+      font-size: 15px;
+  }
+
+  .adls-heading {
+      color: #0078D4; /* Azure blue color, often associated with many Azure services */
+      font-weight: 500;
+      font-size: 15px;
+  }
+
+  .adf-heading {
+      color: #03617b; /* A shade of Azure blue associated with Data Factory */
+      font-weight: 500;
+      font-size: 15px;
+  }
+
+  .databricks-heading {
+      color: #f01f4d; /* Databricks pink color */
+      font-weight: 500;
+      font-size: 15px;
+  }
+
+  .sql-server-heading {
+      color: #00449c; /* SQL Server red color */
+      font-weight: 500;
+      font-size: 15px;
+  }
+
+
+  .text-paragraph p {
+       color: #03617b; /* A shade of Azure blue associated with Data Factory */
+      font-weight: 500;
+      font-size: 15px;
+
+  }
+
+  .ss {
+    color: #000000; /* SQL Server red color */
+    font-weight: 500;
+    font-size: 15px;
+}
+
+.pp p {
+  color: #000000; /* SQL Server red color */
+  font-weight: 500;
+  font-size: 10px;
+
+
+}
+
+.he   {
+  font-family: 'Poppins', sans-serif;
+  color: #000000; /* SQL Server red color */
+  font-weight: 500;
+  font-size: 28px;
+
+
+}
+ 
+
+  
+
+
+
+
+
+
+      </style>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700|Open+Sans:300,400,700" rel="stylesheet"/></head>
+<body>
+<header class="hero" data-aos="fade-right" data-aos-easing="ease-in-sine" data-aos-offset="300">
+<div class="container" data-aos="zoom-out-up">
+<div class="row" data-aos="zoom-out-up">
+<div class="col-md-6 col-md-offset-6 col-xs-12">
+<!-- <a href="#" class="menu"><img src="assets/menu.png"></a> -->
+<div class="hero-text">
+<h1 class="heading purple"><span class="purple"> Data modeling on</span> National Student survey 2023  </h1>
+<p class="pp"> 
+
+  <p>In this article we will go through,How we can process all NSS provided data for 2023 and create STAR schema (fact and dimension) data model.
+
+  <a style="color: black;"><p class="pp"><h5>By Siddharth Chikalkar</h5></p></a>
+
+
+<h5></h5>
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+</div>
+</div>
+</div>
+</div>
+</header>
+<section class="case-study">
+<div class="container">
+<div class="row">
+<div class="col-md-12">
+  <h4 class="sub-heading" data-aos="fade-up" id="targetSection">Let's go through <span class="databricks-heading">Data literacy</span> session</h4>
+
+<h1 class="heading purple"><span class="purple">Types of provider-level view</span> in NSS  </h1>
+<!-- Swiper -->
+<div class="container" style="font-family: Arial, sans-serif; margin-bottom: 20px;"><br/>
+ 
+ 
+
+
+
+  <img alt="Data Lineage Overview" data-aos="zoom-in-down" src="assets\descrip.png"/>
+
+ 
+   
+<table>
+  <tr>
+    <th>Provider level</th>
+    <th>Dataset provided</th>
+    <th>Total Size (MB)</th>
+  </tr>
+  <tr>
+    <td rowspan="4"><h5>Teaching</h5></td>
+    <td>2023 NSS results by teaching provider for all providers (XLSX, 101.7 MB)</td>
+    <td>101.7 MB</td>
+  </tr>
+  <tr>
+    <td>2023 NSS results by teaching provider (full-time) (XLSX, 97.4 MB)</td>
+    <td>97.4 MB</td>
+  </tr>
+  <tr>
+    <td>2023 NSS results by teaching provider (part-time) (XLSX, 6.5 MB)</td>
+    <td>6.5 MB</td>
+  </tr>
+  <tr>
+    <td>2023 NSS results by teaching provider (apprenticeship) (XLSX, 7.1 MB)</td>
+    <td>7.1 MB</td>
+  </tr>
+ 
+  <tr>
+    <td rowspan="4"><h5>Registering</h5></td>
+    <td>2023 NSS results by registering provider for all providers (XLSX, 99 MB)</td>
+    <td>99 MB</td>
+  </tr>
+  <tr>
+    <td>2023 NSS results by registering provider (full-time) (XLSX, 95.4 MB)</td>
+    <td>95.4 MB</td>
+  </tr>
+  <tr>
+    <td>2023 NSS results by registering provider (part-time) (XLSX, 6.3 MB)</td>
+    <td>6.3 MB</td>
+  </tr>
+  <tr>
+    <td>2023 NSS results by registering provider (apprenticeship) (XLSX, 7.1 MB)</td>
+    <td>7.1 MB</td>
+  </tr>
+  <tr>
+   
+  </tr>
+  <tr>
+    
+</table>
+
+<img alt="Data Lineage Overview" data-aos="zoom-in-down" src="assets\descrip1.png"/>
+ 
+<img alt="Data Lineage Overview" data-aos="zoom-in-down" src="assets\new.png"/>
+ 
+ 
+ 
+  <h1 class="heading pink"> <br/>Data processing for multiple modes files</h1>
+
+  <img alt="Data Lineage Overview" data-aos="zoom-in-down" src="assets\NSS teaching files.png"/>
+
+
+  <h1 class="heading pink"> <br/>Let's understading it on teaching provider level</h1>
+
+ 
+  <img alt="Data Lineage Overview" data-aos="zoom-in-down" src="assets\data prep (2).png"/>
+  
+
+
+
+<p>The provided narrative outlines a strategy for consolidating data from various National Student Survey (NSS) files, 
+  which are separated by study modes (e.g., full-time, part-time, apprenticeship), into a unified data model. This integration 
+  enables comprehensive analysis and the creation of Key Performance Indicators (KPIs) across different educational dimensions.
+   By appending these datasets into a single fact table, the approach simplifies the analytical process, allowing for a holistic 
+   view of student satisfaction and performance without the need to replicate analysis for each study mode separately. This method 
+   enhances efficiency and depth of insight derived from the NSS data.<br><br>
+  
+  The last table in the above outline which is "NSS 2023 Teaching" and we are doing same process like above for "Registering" data files. 
+  Now first let's understand how can we add the mode of the study dimension in our dataset.
+  
+  </p>
+
+
+
+
+ 
+
+
+ 
+
+
+
+ 
+  
+
+
+ 
+
+
+
+
+
+
+<h1 class="heading purple"><span class="purple">Data manipulation</span> to add mode of study dimension </h1>
+
+
+<p>The datasets we have been provided lack the "Mode of Study" dimension, which means we are unable to directly filter the data by each mode. This dimension is essential for our analysis, particularly when creating DAX calculations, such as benchmarks, and for visualization purposes. While the NSS dashboard includes this dimension, the dataset itself does not, compelling us to create this dimension ourselves for 
+  our analysis or to accurately replicate the dashboard published by NSS.</p>
+
+<div class="container" style="font-family: Arial, sans-serif; margin-bottom: 20px;">
+<div class="img-box">
+ 
+<p class="text-paragraph">
+  <img alt="Data Lineage Overview" data-aos="zoom-in-down" src="assets\NSSmode of study data.png"/>
+
+  <p>Above is the three modes tables figure, we can see the same structure we have for all tables.</p>
+ 
+  <h2> <br/>How to create Mode of study dimension to filter the data</h2>
+  <img alt="Data Lineage Overview" data-aos="zoom-in-down" src="assets\manupulation.png"/>
+  <img alt="Data Lineage Overview" data-aos="zoom-in-down" src="assets\adding all file show.png"/>
+
+  <p>This is the way we can add the Mode of study dimension, which is the importannt part to make our data accurate while making calculation and for our dashboard view.</p>
+ 
+</div>
+<br/><br/>
+
+
+ 
+
+
+
+<img alt="Data Lineage Overview"   src="assets\DM full.png"/>
+<p>Above figure explain, complect data model process with the appropriate steps we have to take to make our data model accurate and complete. above we are are processing all data that OFS has provided on the 
+  NSS 2023. Now lets create the dimensions and their relationship with fact table.
+</p>
+<img alt="Data Lineage Overview"   src="assets\STAR.png"/>
+
+<img alt="Data Lineage Overview"   src="assets\filter.png"/>
+ 
+
+
+
+
+
+<h1 class="heading purple"><span class="purple">Comparing positivity Measure with NSS 2023 dashboard.</span>   </h1>
+<h4>To validate the results i compared it with the NSS 2023 dashboard.</h4>
+
+<img alt="Data Lineage Overview"   src="assets\trend.png"/>
+
+<p></p>
+
+ 
+
+<br>
+
+<h1 class="heading purple"><span class="purple">Now Let's create some graphs.</span>   </h1>
+ 
+<img alt="Data Lineage Overview"   src="assets\benchmark.png"/>
+
+<img alt="Data Lineage Overview"   src="assets\des up.png"   />
+
+<img alt="Data Lineage Overview"   src="assets\ind.png"   />
+
+
+<img alt="Data Lineage Overview"   src="assets\des.png"   />
+
+<img alt="Data Lineage Overview"   src="assets\years.png"   />
+
+<img alt="Data Lineage Overview" data-aos="zoom-in-down" src="assets\new2.png"/>
+<br>
+<br>
+<br>
+
+<img alt="Data Lineage Overview"   src="assets\final.png"   />
+
+
+<br>
+<br>
+<br>
+<br>
+
+<div class="img-box" style="flex: 1; margin: 0 5px; display: flex; justify-content: center; align-items: center;">
+  <video autoplay muted loop controls style="max-width: 100%; max-height: 100%; width: auto; height: auto;">
+    <source src="assets/dash.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+</div>
+
+
+
+
+
+<br>
+<br>
+<br>
+<br>
+
+
+<p>
+
+ Tool used for all content explained in this article. Power bi,Python,SQL Server,Excel.<br><br>
+
+check my other project Data Governance Driven ETL where I implmented <a href="https://sid0925.github.io/DG-Driven-ETL/">Data Governance Driven ETL</a>
+by incorporating with UK GDPR principles defined by ICO. where I used azure cloud for ETL, ADLS,Data Factory,Databricks,Azure SQL Sever and Power bi.
+
+ 
+
+
+
+
+
+
+
+
+
+
+</p>
+
+
+
+
+
+
+
+
+<h4>References  </h4>
+<p>
+
+<a href="https://www.officeforstudents.org.uk/advice-and-guidance/student-information-and-data/national-student-survey-nss/">National Student Survey - NSS</a>
+
+
+
+</p>
+
+
+
+
+
+
+
+
+
+ 
+<!-- Statistics -->
+<!-- Footer -->
+<footer>
+<div class="container-fluid">
+<div class="row footer">
+<div id="about">
+<h1>Siddharth<br/><span>Chikalkar</span></h1>
+<p>I am graduatedin MSc in Data Analytics at Aston University in Birmingham. I hold a Bachelor's degree in Computer Application (BCA) from India, where I achieved a GPA of 8.68. With a strong foundation in data analytics and computer science, I have developed a diverse skill set. I am experienced in utilizing tools such as Power BI, SQL, and Excel for data management, visualization, and analysis. Through various projects, I have gained expertise in data cleaning, transformation, and developing insightful dashboards. Additionally, I have worked on machine learning projects, applying algorithms for loan approval prediction and facial expression detection. My passion for leveraging data to drive informed decision-making is matched by my proficiency in Python, Django, and TensorFlow. With a keen eye for detail and a drive for continuous learning, I am dedicated to delivering accurate and impactful data-driven solutions.</p>
+<ul class="social-links">
+<li><a href="https://www.linkedin.com/in/siddharth-chikalkar-7244141b0"><img src="assets/behance.png"/></a></li>
+</ul>
+</div>
+</div>
+</div>
+</footer>
+<!-- Some Javascript -->
+<script src="js/jquery-2.1.1.js"></script>
+<script src="js/swiper.jquery.min.js"></script>
+<!-- Initialize Client Swiper -->
+<script>
+      var swiper1 = new Swiper('.client-swiper', {
+        slidesPerView: 3,
+        paginationClickable: true,
+        nextButton: '.swiper-button-next',
+        prevButton: '.swiper-button-prev',
+        spaceBetween: 60,
+        // Responsive breakpoints
+        breakpoints: {
+          // when window width is <= 320px
+          320: {
+            slidesPerView: 1,
+            spaceBetween: 10,
+            pagination: '.swiper-pagination'
+          },
+          // when window width is <= 480px
+          480: {
+            slidesPerView: 1,
+            spaceBetween: 20
+          },
+          // when window width is <= 640px
+          640: {
+            slidesPerView: 1,
+            spaceBetween: 30
+          }
+        }
+      });
+      // Initialize Testimonial Swiper
+      var swiper2 = new Swiper('.testimonial-swiper', {
+        slidesPerView: 3,
+        pagination: '.swiper-pagination',
+        paginationClickable: true,
+        spaceBetween: 30,
+        grabCursor: true,
+        freeMode: true,
+        breakpoints: {
+          // when window width is <= 320px
+          320: {
+            slidesPerView: 1,
+            spaceBetween: 10,
+          },
+          // when window width is <= 480px
+          480: {
+            slidesPerView: 1,
+            spaceBetween: 10
+          },
+          // when window width is <= 640px
+          640: {
+            slidesPerView: 1,
+            spaceBetween: 10
+          }
+        }
+      });
+      </script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
+<script src="js/jquery.counterup.min.js"></script>
+<script>
+      // Counterup
+      $('.counter').counterUp({
+        time: 1000
+      });
+
+      // Main Navigation
+      $('#menu-toggle').click(function(){
+        $(this).toggleClass('open'),
+        $('.main-nav').toggleClass('show-it');
+      })
+      </script>
+<!-- Google Analytics - You should remove this -->
+<script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-29231762-2', 'auto');
+      ga('send', 'pageview');
+
+
+
+     
+        AOS.init();
+     
+      </script>
+</div>
